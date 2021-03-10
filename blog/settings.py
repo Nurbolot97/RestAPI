@@ -18,6 +18,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'my_user.User'
 
 # Application definition
 
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # My apps
     'mysite',
+    'my_user',
     # Third apps
     'rest_framework',
     'django_filters',
@@ -113,6 +115,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL')
+EMAIL_HOST_PASSWORD = config('PASS')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -122,3 +131,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
